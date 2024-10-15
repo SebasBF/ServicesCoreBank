@@ -4,19 +4,19 @@ import { Request, Response } from 'express';
 export class AccountController {
   accountModel: AccountModel;
 
-  constructor({accountModel}: {accountModel: AccountModel}){
+  constructor({ accountModel }: { accountModel: AccountModel }){
     this.accountModel = accountModel
   }
 
   newAccount = async(req: Request, res: Response) => {
     try{
-      const { accountNumber, cedula, accountType } = req.body;
-      if(!accountNumber || !cedula || !accountType){
+      const { numerocuenta, cedula, tipocuenta } = req.body;
+      if(!numerocuenta || !cedula || !tipocuenta){
         res.status(400).json({error: 'all fields are required'})
         return;
       }
-      const account = await this.accountModel.newAccount(accountNumber, cedula, accountType);
-      res.json({ success: true})
+      const account = await this.accountModel.newAccount(numerocuenta, cedula, tipocuenta);
+      res.json({ success: true })
     }
     catch(e: any){
       res.status(500).json({ error: e.message, message: 

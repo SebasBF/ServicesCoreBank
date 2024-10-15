@@ -1,6 +1,4 @@
 import { Router } from "express";
-import { UserController } from "../controllers/user";
-import { UserModel } from "../models/user";
 import { ClientController } from "../controllers/client";
 import { ClientModel } from "../models/client";
 
