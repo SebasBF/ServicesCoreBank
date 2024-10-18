@@ -9,7 +9,8 @@ export const createTransferRouter = ({ transferModel }: {transferModel: Transfer
     const transferController = new TransferController({transferModel})
     
     transferRouter.get('/all', transferController.getAllTransfers)
+    transferRouter.post('/create', transferController.newTransfer)
     transferRouter.get('/:accountId', transferController.getTransfersByAccountId)
-   
+    
     return transferRouter;
 }

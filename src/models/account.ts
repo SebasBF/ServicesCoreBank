@@ -16,6 +16,11 @@ export class AccountModel {
     const user = await query("SELECT * from cuentas where cedula = $1", [id])
     return user.rows;
   }
+  
+  async getAccountByAN(accountId: string){
+    const user = await query("SELECT * from cuentas where numerocuenta = $1", [accountId])
+    return user.rows;
+  }
 
   async deleteAccount(id: string){
     const user = await query("DELETE from cuentas where numerocuenta = $1", [id])

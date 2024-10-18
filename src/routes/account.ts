@@ -10,6 +10,7 @@ export const createAccountRouter = ({ accountModel }: {accountModel: AccountMode
     
     accountRouter.get('/all', accountController.getAllAccounts)
     accountRouter.get('/:cedula', accountController.getAccountById)
+    accountRouter.get('/cuenta/:numerocuenta', accountController.getAccountByAN)
     accountRouter.post('/create', accountController.newAccount)
     accountRouter.delete('/:accountNumber', accountController.deleteAccount)
 

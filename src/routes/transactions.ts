@@ -10,6 +10,7 @@ export const createTransactionRouter = ({ transactionModel }: {transactionModel:
     
     transactionRouter.get('/all', transactionController.getAllTransactions)
     transactionRouter.get('/:accountId', transactionController.getTransactionById)
+    transactionRouter.post('/create',transactionController.newTransaction)
    
     return transactionRouter;
 }

@@ -50,6 +50,21 @@ export class AccountController {
     }
   }
 
+  getAccountByAN = async(req: Request, res: Response) => {
+    try{
+      const { numerocuenta } = req.params;
+      if(!numerocuenta){
+        res.status(400).json({error: 'numerocuenta can not be null'})
+        return;
+      }
+      const user = await this.accountModel.getAccountByAN(numerocuenta);
+      res.json({ data: user })
+    }
+    catch(e: any){
+      res.status(500).json({ error: e.message })
+    }
+  }
+
   deleteAccount = async(req: Request, res: Response) => {
     try{
       const { accountNumber } = req.params;

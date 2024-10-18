@@ -33,4 +33,27 @@ export class TransactionController {
     }
   }
 
+  newTransaction = async(req: Request, res: Response) => {
+     try {
+      
+      const {numerocuenta, monto, tipotransaccion, descripcion } = req.body;
+      if(!numerocuenta || !monto|| !tipotransaccion || !descripcion){
+        res.status(400).json({error: 'all fields are required'})
+        return;
+      }
+      await this.transactionModel.newTransaction(
+        numerocuenta,
+        monto,
+        tipotransaccion,
+        descripcion
+      )
+      
+      res.json({ success: true})
+
+     } catch (e: any) {
+      res.status(500).json({ error: e.message, message: 
+        'error making the transaction'
+       })
+     }
+  }
 }

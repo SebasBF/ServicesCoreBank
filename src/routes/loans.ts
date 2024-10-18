@@ -10,6 +10,8 @@ export const createLoansRouter = ({ loansModel }: { loansModel: LoansModel }) =>
     
     loansRouter.get('/all', loansController.getAllLoans)
     loansRouter.get('/:id', loansController.getLoanById)
+    loansRouter.post('/create/loan', loansController.newLoan)
+    loansRouter.post('/create/payment', loansController.newLoanPayment)
    
     return loansRouter;
 }

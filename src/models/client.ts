@@ -10,8 +10,8 @@ export class ClientModel {
     return newUser.rows[0];
   }
 
-  async login(email: string, password: string){
-      const user = await query("SELECT * from clientes where cedula = $1", [email])
+  async login(cedula: string, password: string){
+      const user = await query("SELECT * from clientes where cedula = $1", [cedula])
       if(user.rowCount && user.rowCount > 0){
         const userHashPwd = user.rows[0].contraseña
         const res = await bycrypt.compare(password, userHashPwd)

@@ -32,5 +32,26 @@ export class TransferController {
       res.status(500).json({ error: e.message })
     }
   }
+  newTransfer = async(req: Request, res: Response) => {
+    try {
+      const {numerocuenta, numerocuentadestino, bancodestino, monto} = req.body;
+      if(!numerocuenta || !numerocuentadestino || !bancodestino || !monto){
+        res.status(400).json({error: 'all fields are required'})
+        return;
+      }
+      await this.transferModel.newTransfer(
+        numerocuenta,
+        numerocuentadestino,
+        bancodestino,
+        monto   
+      )
+      console.log()
+      res.json({ success: true})
 
+     } catch (e: any) {
+      res.status(500).json({ error: e.message, message: 
+        'error making the transfer'
+       })
+     }
+  }
 }
